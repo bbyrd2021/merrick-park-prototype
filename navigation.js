@@ -2,6 +2,8 @@
 const root=document.getElementById('mp-motion');
 const menu=root.querySelector('#mp-menu'),nav=root.querySelector('#mp-nav');
 const header=root.querySelector('header');
+const syncScrolled=()=>header.classList.toggle('is-scrolled',window.scrollY>24);
+window.addEventListener('scroll',syncScrolled,{passive:true});syncScrolled();
 const syncHeaderHeight=()=>root.style.setProperty('--nav-height',header.getBoundingClientRect().height+'px');
 new ResizeObserver(syncHeaderHeight).observe(header);syncHeaderHeight();
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');

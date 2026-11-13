@@ -81,3 +81,10 @@ html{scroll-behavior:smooth}
  #mp-motion .hero{min-height:0}
  #mp-motion .navlinks.open{max-height:calc(100dvh - var(--nav-height));overflow-y:auto;overscroll-behavior:contain}
 }
+
+/* Blend into the hero until scrolling begins. */
+#mp-motion>header{background:transparent;border-bottom-color:transparent;box-shadow:none;transition:background-color .22s ease,box-shadow .22s ease,border-color .22s ease}
+#mp-motion>header.is-scrolled{background:#fffbec;border-bottom-color:#a2916044;box-shadow:0 3px 14px #35001b12}
+#mp-motion .hero{margin-top:calc(-1 * var(--nav-height));padding-top:var(--nav-height);min-height:620px}
+@media(max-width:700px){#mp-motion .hero{min-height:0}}
+@media(prefers-reduced-motion:reduce){#mp-motion>header{transition:none}}
