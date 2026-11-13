@@ -48,3 +48,25 @@ html{scroll-behavior:smooth}
  #mp-motion .action,#mp-motion .signup{transition:none}
  #mp-motion .action:hover,#mp-motion .signup:hover{transform:none}
 }
+
+/* Mobile navigation: anchored dropdown, independent of the hero layout. */
+#mp-motion header{position:relative;z-index:5}
+#mp-motion .menu-icon{position:relative;display:block;width:24px;height:18px}
+#mp-motion .menu-icon span{position:absolute;left:0;width:24px;height:2px;background:currentColor;border-radius:1px;transition:transform .2s ease,opacity .2s ease;transform-origin:center}
+#mp-motion .menu-icon span:nth-child(1){top:0}
+#mp-motion .menu-icon span:nth-child(2){top:8px}
+#mp-motion .menu-icon span:nth-child(3){top:16px}
+#mp-motion .menu[aria-expanded="true"] .menu-icon span:nth-child(1){transform:translateY(8px) rotate(45deg)}
+#mp-motion .menu[aria-expanded="true"] .menu-icon span:nth-child(2){opacity:0}
+#mp-motion .menu[aria-expanded="true"] .menu-icon span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
+@media(max-width:700px){
+ #mp-motion header{flex-wrap:nowrap;min-height:88px}
+ #mp-motion .menu{display:flex;align-items:center;justify-content:center;width:48px;height:48px;padding:0;border:1px solid #5f00382b;border-radius:4px;background:#fffbecb8;flex:none}
+ #mp-motion .menu:hover,#mp-motion .menu[aria-expanded="true"]{background:#fffbec;border-color:#5f003866}
+ #mp-motion .navlinks.open{position:absolute;top:100%;left:0;right:0;width:auto;display:flex;flex-direction:column;gap:0;padding:12px 24px 20px;margin:0;background:#fffbec;border-top:1px solid #a2916044;border-bottom:1px solid #a2916066;box-shadow:0 16px 24px #35001b12;animation:mp-menu-in .2s ease both}
+ #mp-motion .navlinks a{display:flex;min-height:50px;padding:12px 4px;font:500 17px Helvetica,Arial,sans-serif;border-bottom:1px solid #5f003812}
+ #mp-motion .navlinks a:last-child{border-bottom:0}
+ #mp-motion .navlinks a:hover{color:#5f0038;background:#5f003807}
+}
+@keyframes mp-menu-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){#mp-motion .menu-icon span{transition:none}#mp-motion .navlinks.open{animation:none}}
