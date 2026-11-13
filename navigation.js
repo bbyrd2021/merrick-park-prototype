@@ -1,6 +1,9 @@
 (()=>{
 const root=document.getElementById('mp-motion');
 const menu=root.querySelector('#mp-menu'),nav=root.querySelector('#mp-nav');
+const header=root.querySelector('header');
+const syncHeaderHeight=()=>root.style.setProperty('--nav-height',header.getBoundingClientRect().height+'px');
+new ResizeObserver(syncHeaderHeight).observe(header);syncHeaderHeight();
 const reduced=matchMedia('(prefers-reduced-motion: reduce)');
 function closeMenu(){nav.classList.remove('open');menu.setAttribute('aria-expanded','false');menu.setAttribute('aria-label','Open navigation');}
 menu.onclick=()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation':'Open navigation');};

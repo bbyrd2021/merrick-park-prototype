@@ -70,3 +70,14 @@ html{scroll-behavior:smooth}
 }
 @keyframes mp-menu-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @media(prefers-reduced-motion:reduce){#mp-motion .menu-icon span{transition:none}#mp-motion .navlinks.open{animation:none}}
+
+/* Keep navigation available across every section. */
+#mp-motion{--nav-height:104px}
+#mp-motion>header{position:sticky;top:0;z-index:30;background:#fffbec;border-bottom:1px solid #a2916044;box-shadow:0 3px 14px #35001b08}
+#mp-motion section[id]{scroll-margin-top:calc(var(--nav-height) + 16px)}
+#mp-motion .hero{min-height:calc(620px - var(--nav-height))}
+@media(max-width:700px){
+ #mp-motion{--nav-height:88px}
+ #mp-motion .hero{min-height:0}
+ #mp-motion .navlinks.open{max-height:calc(100dvh - var(--nav-height));overflow-y:auto;overscroll-behavior:contain}
+}
